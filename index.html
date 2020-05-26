@@ -1,100 +1,288 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+<title>Lars Hallstrom</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Roboto", sans-serif}
+.w3-quarter img{margin-bottom: -6px; cursor: pointer}
+.w3-quarter img:hover{opacity: 0.6; transition: 0.3s}
+* {box-sizing: border-box}
 
-  <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160007729-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+/* Container needed to position the overlay. Adjust the width as needed */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
 
-      gtag('config', 'UA-160007729-1');
-    </script>
+/* Make the image to responsive */
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-    <title>Lars Hallstrom</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+/* The overlay effect - lays on top of the container and over the image */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  max-height: 300px;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900" rel="stylesheet">
+/* When you mouse over the container, fade in the overlay title */
+.container:hover .overlay {
+  opacity: 1;
+}
+</style>
+<body class="w3-light-grey">
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a> 
+  <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">HOME</a> 
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ABOUT</a> 
+  <a href="#racing" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">RACING</a>
+  <a href="#engineering" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ENGINEERING</a>
+  <a href="#follow" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">FOLLOW</a>
+</nav>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/aos.css">
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-white w3-xlarge w3-padding-16">
+  <span class="w3-left w3-padding">LARS HALLSTROM</span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
+</header>
 
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="css/style.css">
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-  </head>
-
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content" style="max-width:1600px;margin-top:83px">
+  
+  <!-- Photo grid -->
+  <div class="w3-row">
+    <div class="w3-third">
+      <img src="images/index_1.jpeg" style="width:100%" onclick="onClick(this)" alt="Peak2Peak MTB Race Start">
+      <!-- <img src="/w3images/boy.jpg" style="width:100%" onclick="onClick(this)" alt="Quiet day at the beach. Cold, but beautiful"> -->
+      
+   </div>
     
-    <div class="site-wrap" id="home-section">
+   <div class="w3-twothird">
+      <img src="images/index_2.jpeg" style="width:100%" onclick="onClick(this)" alt="USCSA National Championship">
+      
+    </div>
+    
+  </div>
 
-      <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-          </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
+
+  <!-- Pagination 
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+    </div>
+  </div> -->
+  
+	
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image" alt="img01">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- About section -->
+  <div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="about">
+    <div class="w3-half w3-padding-16">
+	  <img src="images/about_1.JPG" style="width:75%" onclick="onClick(this)" alt="Headshot">
+  	</div>
+	
+	<div class="w3-half">
+  		<h4><b>About Me</b></h4>
+    </div>
+    
+  </div>
+
+<!-- Racing section -->
+<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="racing">
+      
+	<div class="w3-half">
+		<h4 class="w3-center"><b>2020 Race Schedule</b></h4>
+		<p>January 25 <b>Noquemanon Ski Marathon</b> - Marquette, MI</p>
+		<p>February 1 <b>White Pine Stampede</b> - Mancelona, MI</p>
+		<p>February 8-9 <b>North American Vasa</b> - Traverse City, MI</p>
+		<p>February 15-16 <b>Michigan Nordic Ski State Championships</b> - Grayling MI</p>
+		<p>March 10-14 <b>USCSA National Championships</b> - Lake Placid, NY</p>
+		<p>CANCELED <s><b>April 24 Epic Rides Whiskey Off-Road</b> - Prescott, AZ</s></p>
+		<p>CANCELED <s><b>May 17 Epic Rides Grand Junction Off-Road</b> - Grand Junction, CO</s></p>
+		<p>June 28 <b>Epic Rides Carson City Off-Road</b> - Carson City, NV</p>
+		<p>TBD <b>US XC MTB National Championship</b> - Winter Park, CO</p>
+		<p>August 8 <b>Ore to Shore</b> - Marquette, MI</p>
+		<p>September 20 <b>Melting Mann</b> - Vandalia, MI</p>
+		<p>October 10 <b>Epic Rides OZ Trails Off-Road</b> - Bentonville, AR</p>
+		<p>October 17 <b>Dirty 30 Gravel Grinder</b> - Saranac, MI</p>
+		<p>October 24 <b>Peak2Peak</b> - Thompsonville, MI</p>
+		<p>November 7 <b>Iceman</b> - Traverse City, MI</p>
+		<p>November 14 <b>US MTB Marathon National Championship</b> - Palo Duro Canyon, TX</p>
+	</div>
+	<div class="w3-half w3-padding-32">
+		<img display="block" margin-left="auto" margin-right="auto" src="images/index_3.jpeg" style="width:100%" onclick="onClick(this)" alt="Peak2Peak MTB Race On Trail">
+	</div>
+	
+	<div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="sponsors">
+		<h4 class="w3-center"><b>Sponsors</b></h4>
+		<div class="w3-half">
+			<div class="w3-container w3-center">
+			<a href="https://www.hammernutrition.com"><img display="block" src="images/hammer.png" style="width:80%" alt="Hammer Nutrition"></a>
+			 <p>Save 15% off your first order with code 317943</p>
+			</div>
+		</div>
+		<div class="w3-half">
+			<div class="w3-container w3-center">
+			<a href="https://www.motorcitybicycle.com"><img display="block" margin-left="auto" margin-right="auto" src="images/mcb.jpg" style="width:80%" alt="Motor City Bicycle"></a>
+			<p>Locations in Ann Arbor, Brighton and Canton, Michigan. Special financing available!</p>
+		</div>
+	</div>
+	
+    </div>
+</div>
+<!-- Engineering section -->
+<div class="w3-container w3-dark-grey w3-center w3-text-light-grey w3-padding-32" id="engineering">
+	<h4><b>Engineering</b></h4>
+	
+	<div class="w3-third w3-padding-16">
+	<div class="w3-hover-shadow container">
+		<a href="Portfolio/prostheticfinger.html"><img src="images/Portfolio/Finger11.JPG" alt="Prosthetic Finger" class="image" width="100%"></a>
+		<div class="overlay"><b>3D Printable Prosthetic Hand</b>
+			<p>Realistic finger designed using Autodesk Fucion 360 for 3D printable neurally controlled prosthetic hand.</p>
+		</div>
+	</div></div>
+	<div class="w3-third w3-padding-16">
+	<div class="w3-hover-shadow container">
+		<img src="images/Portfolio/TwerkyPunchy3.jpg" alt="Twerky Punchy" class="image" width="100%">
+		<div class="overlay"><b>Twerky Punchy</b>
+			<p>Designed and printed personalizable electronic music device for BlackBoxfx in Copenhagen, DK.</p>
+		</div>
+	</div></div>
+	<div class="w3-third w3-padding-16">
+	<div class="w3-hover-shadow container">
+		<img src="images/Portfolio/Boathouse5.JPG" alt="Cantilever boat shelter" class="image" width="100%">
+		<div class="overlay"><b>36' Cantilevered Boat Shelter</b>
+			<p>Boat shelter designed to protect and organize fragile rowing shells, kayaks, windsurfing boards and accessories.</p>
+		</div>
+	</div></div>
+	<div class="w3-third w3-padding-16">
+	<div class="w3-hover-shadow container">
+		<img src="images/Portfolio/Bikerack3.JPG" alt="Double bike storage" class="image" width="100%">
+		<div class="overlay"><b>Hardwood Double Bike Rack with storage shelves</b>
+			<p>Maple bike rack specifically designed to store a 29" mountain bike and road bike.</p>
+		</div>
+	</div></div>
+	<div class="w3-third w3-padding-16">
+	<div class="w3-hover-shadow container">
+		<img src="images/Portfolio/bedsidetable2.jpeg" alt="Bed side table" class="image" width="100%">
+		<div class="overlay"><b>Handmade Hardwood Bedside Table</b>
+		</div>
+	</div></div>
+</div>
+		
+  <!-- Follow section -->
+  <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="follow">
+    <div class="w3-content">
+      <h4 class="w3-center"><b>Follow</b></h4>
+      <p></p>
+      <!-- Place <div> tag where you want the feed to appear -->
+		<div class="w3-twothird" id="curator-feed-default-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
+		<!-- The Javascript can be moved to the end of the html page before the </body> tag -->
+		<script type="text/javascript">
+		/* curator-feed-default-layout */
+		(function(){
+		var i, e, d = document, s = "script";i = d.createElement("script");i.async = 1;
+		i.src = "https://cdn.curator.io/published/8ba4b7dd-b502-469f-95e0-c25428f05540.js";
+		e = d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+		})();
+		</script>
+		<div class="w3-third w3-center">
+			<iframe height="454" width="300" frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/19538543/latest-rides/5e97e7d24c300113bdd67eb84f618b36a45a7d23"></iframe>
+		</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-32 w3-grey">  
+    <div class="w3-row-padding">
+      <div class="w3-third">
+        <h3>CONNECT</h3>
+        <a href="https://www.instagram.com/lars.str0m/"><img src="images/instagram_icon_black.png" style="height:35px" alt="instagram link"></a>
+		<a href="https://facebook.com/lars.str0m"><img src="images/facebook_icon_black.png" style="height:35px" alt="facebook link"></a>
+		<a href="https://www.linkedin.com/in/lars-hallstrom-7a3363136/"><img src="images/linkedin_icon_black.png" style="height:35px" alt="linkedin link"></a>
+		<a href="https://www.strava.com/athletes/19538543"><img src="images/strava_icon_black.png" style="height:45px" alt="strava link"></a>
+      </div>
+    
+      <div class="w3-third">
+        <h3>CONTACT</h3>
+        	<p>Email: lstrom@umich.edu</p>
+		  	
       </div>
 
-
-
-      <header class="site-navbar site-navbar-target" role="banner">
-
-        <div class="container">
-          <div class="row align-items-center position-relative">
-
-            <div class="col-3 ">
-              <div class="site-logo">
-                <a href="index.html" class="font-weight-bold">Lars Hallstrom</a>
-              </div>
-            </div>
-
-            <div class="col-9  text-right">
-              
-
-              <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-primary"></span></a></span>
-
-              
-
-              <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
-                <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li><a href="about.html" class="nav-link">About</a></li>
-                  <li><a href="racing.html" class="nav-link">Racing</a></li>
-                  <li><a href="engineering.html" class="nav-link">Engineering</a></li>
-                  <li><a href="follow.html" class="nav-link">Follow</a></li>
-                </ul>
-              </nav>
-            </div>
-
-            
-          </div>
-        </div>
-
-      </header>
-    <div class="site-section about-me">
-     <div class="container">
-       <div class="row align-items-center">
-         <div class="col-md-6 mb-5 mb-md-0">
-           <img src="images/index_1.png" alt="Image" class="img-fluid">
-         </div>
-         <div class="col-md-5 ml-auto">
-           <h2 class="text-primary mb-5 font-weight-bold">More information coming soon!</h2>
-            
-         </div>
-       </div>
-     </div>
+      <div class="w3-third">
+        <h3>POPULAR TAGS</h3>
+        <p>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Engineering</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Mountain Biking</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Nordic Skiing</span>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Cycling</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Bike</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Hammer Nutrition</span>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Design</span>
+        </p>
+      </div>
     </div>
-  </body>
+  </footer>
+  
+  <div class="w3-black w3-center w3-padding-24">© 2020 by Lars Hallstrom. Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+</script>
+
+
+
+
+</body>
 </html>
