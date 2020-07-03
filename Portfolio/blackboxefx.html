@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>BlackBoxEfx</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Roboto", sans-serif}
+.w3-quarter img{margin-bottom: -6px; cursor: pointer}
+.w3-quarter img:hover{opacity: 0.6; transition: 0.3s}
+* {box-sizing: border-box}
+
+/* Container needed to position the overlay. Adjust the width as needed */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Make the image to responsive */
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The overlay effect - lays on top of the container and over the image */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  max-height: 300px;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* When you mouse over the container, fade in the overlay title */
+.container:hover .overlay {
+  opacity: 1;
+}
+</style>
+<body class="w3-light-grey">
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a> 
+  <a href="../index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">HOME</a> 
+  <a href="../index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ABOUT</a> 
+  <a href="../index.html../index.html../index.html" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">RACING</a>
+  <a href="#engineering" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ENGINEERING</a>
+  <a href="#follow" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">FOLLOW</a>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-white w3-xlarge w3-padding-16">
+  <span class="w3-left w3-padding">LARS HALLSTROM</span>
+  <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+
+ <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" style="max-width:1600px;margin-top:83px"> 
+ <div class="w3-center" >
+	 <h2>Twerky Punchy</h2>
+	 <h3>Designed and printed personalizable electronic music device for BlackBoxfx in Copenhagen, DK.</h3>
+	 <p>During my time in Copenhagen I worked with the local startup BlackBox. They are designing a customizable electronic music device. While I was there the company changed the product they were focusing on. This was a great opportunity for me because it allowed me to be involved in the physical design of the product from the very beginning.</p>
+	 <p>Working with the founders I came up with a modular triangular design which will allow customers to combine multiple devices in a compact space. I designed the product using Autodesk Inventor before 3D printing and testing the first prototype. Before completing my internship I left BlackBox with multiple CAD models for different manufacturing techniques, including a model with a 3% shrinkage on certain parts for PLA printed products.</p>
+	 
+	 </div>
+	 
+  <!-- Photo grid -->
+    <div class="w3-third w3-padding-16">
+      <img src="../images/Portfolio/TwerkyPunchy3.jpg" style="width:95%" onclick="onClick(this)" alt="TwerkyPunchy3">
+   </div>
+    
+   <div class="w3-third w3-padding-16">
+      <img src="../images/Portfolio/TwerkyPunchy.jpg" style="width:95%" onclick="onClick(this)" alt="TwerkyPunchy">
+    </div>
+	  
+	<div class="w3-third w3-padding-16">
+      <img src="../images/Portfolio/TwerkyPunchy2.jpg" style="width:95%" onclick="onClick(this)" alt="TwerkyPunchy2">
+    </div>
+    
+ 
+
+
+  <!-- Pagination 
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+    </div>
+  </div> -->
+  
+	
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image" alt="img01">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+	</div>
+<!-- Footer -->
+  <footer class="w3-container w3-padding-32 w3-grey">  
+    <div class="w3-row-padding">
+      <div class="w3-third">
+        <h3>CONNECT</h3>
+        <a href="https://www.instagram.com/lars.str0m/"><img src="../images/instagram_icon_black.png" style="height:35px" alt="instagram link"></a>
+		<a href="https://facebook.com/lars.str0m"><img src="../images/facebook_icon_black.png" style="height:35px" alt="facebook link"></a>
+		<a href="https://www.linkedin.com/in/lars-hallstrom-7a3363136/"><img src="../images/linkedin_icon_black.png" style="height:35px" alt="linkedin link"></a>
+		<a href="https://www.strava.com/athletes/19538543"><img src="../images/strava_icon_black.png" style="height:45px" alt="strava link"></a>
+      </div>
+    
+      <div class="w3-third">
+        <h3>CONTACT</h3>
+        	<p>Email: lstrom@umich.edu</p>
+		  	
+      </div>
+
+      <div class="w3-third">
+        <h3>POPULAR TAGS</h3>
+        <p>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Engineering</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Mountain Biking</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Nordic Skiing</span>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Cycling</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Bike</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Hammer Nutrition</span>
+          <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Design</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+  
+  <div class="w3-black w3-center w3-padding-24">© 2020 by Lars Hallstrom. Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+
+<!-- End page content -->
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+</script>
+
+
+
+
+</body>
+</html>
